@@ -1,0 +1,15 @@
+.sites-runtime/
+node_modules/
+artifacts/
+*.tar.gz
+data/
+*.sqlite
+*.sqlite-shm
+*.sqlite-wal
+.env
+.env.*
+!.env.example
+admin-bootstrap.cjs
+.openai/
+backups/
+*.log

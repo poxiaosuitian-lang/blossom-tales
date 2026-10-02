@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#132743"><meta name="description" content="拾花物语，记录你的校园奇遇，用大红花开启每一份小幸运。">
+  <title>拾花物语 · 宿主绑定</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cpath fill='%23bceaff' d='M32 2 41 23 62 32 41 41 32 62 23 41 2 32 23 23Z'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="styles.css"><link rel="stylesheet" href="cinematic.css"><link rel="stylesheet" href="rewards.css"><link rel="stylesheet" href="viewport.css"><link rel="stylesheet" href="result-layout.css"><link rel="stylesheet" href="accounts.css"><link rel="stylesheet" href="entry.css"><link rel="stylesheet" href="blossom-dialogs.css"><link rel="stylesheet" href="admin-settings.css"><link rel="stylesheet" href="growth.css"><link rel="stylesheet" href="admin-probabilities.css"><link rel="stylesheet" href="pool-layout.css"><script src="growth.js" defer></script><script src="engine.js" defer></script><script src="accounts.js" defer></script><script src="audio.js" defer></script><script src="app.js" defer></script>
+</head>
+<body class="auth-active">
+  <div class="backdrop" aria-hidden="true"></div><div class="vignette" aria-hidden="true"></div><div id="particles" aria-hidden="true"></div>
+  <div class="app-shell">
+    <header class="topbar">
+      <a class="brand" href="./" aria-label="拾花物语首页"><span class="brand-star">✧</span><span>拾花物语<span class="brand-en">BLOSSOM TALES</span></span></a>
+      <div class="connection"><i></i> 系统连接稳定 <span>·</span> 宿主已绑定</div>
+      <div class="top-actions"><span class="currency"><img class="flower-icon" src="assets/red-flower.png" alt=""><b id="balance">0</b><small>大红花</small></span><button class="account-action" id="account-button">宿主绑定</button><button class="icon-button" id="sound" aria-label="关闭音乐与音效" title="关闭音乐与音效 · 花间晴昼" aria-pressed="true">♫</button><button class="icon-button" id="fullscreen" aria-label="切换全屏" title="全屏">⛶</button></div>
+    </header>
+    <main>
+      <div class="page-heading"><div class="eyebrow">THE VAULT OF INFINITE WORLDS</div><div class="title-line"><span></span><i>✧</i><h1>万界祈愿</h1><i>✧</i><span></span></div><p>诸天万物，皆可为你而来。</p></div>
+      <nav class="tabs" aria-label="系统功能"><button class="tab active" data-view="summon" aria-current="page">✧ <span>命运召唤</span></button><button class="tab" data-view="inventory">♧ <span>我的宝库</span><b id="inventory-count">0</b></button><button class="tab" data-view="history">◷ <span>祈愿记录</span></button></nav>
+      <section id="summon-view" class="view">
+        <div class="summon-layout">
+          <aside class="left-column">
+            <section class="glass host-card"><div class="section-label">HOST INFORMATION <span>01</span></div><div class="host-title"><span class="avatar" id="host-growth-symbol">芽</span><div><small>你好，天选之人</small><h2 id="host-name">等待宿主绑定</h2></div><span class="level" id="host-level">Lv. 01</span></div><div class="host-divider" id="host-growth" role="progressbar" aria-label="等级成长" aria-valuemin="0" aria-valuemax="10" aria-valuenow="0"><span id="host-growth-fill"></span></div><div class="host-row"><span>当前境界</span><b id="host-realm">拾花初识</b></div><div class="host-row"><span>系统权限</span><b id="host-role">命运之子 ✦</b></div><div class="host-row"><span>累计祈愿</span><b><span id="total">0</span> 次</b></div></section>
+            <section class="glass notice-card"><h2><span>◇</span> 系统提示</h2><p id="system-message">叮！万界抽奖系统已激活。<br>你的第一份机缘，正在等待回应。</p><p class="quiet-note">每次祈愿消耗 10 朵大红花</p></section>
+            <button class="text-button rules-link" id="rules-button">✿ &nbsp;拾花手册 · 规则与概率 <span>↗</span></button>
+          </aside>
+          <section class="summoning" aria-label="命运召唤法阵">
+            <div class="pool-tag"><i></i> 常驻祈愿 · 诸天宝库</div>
+            <div class="portal" id="portal" aria-hidden="true"><div class="portal-aura"></div><div class="orbit orbit-one"></div><div class="orbit orbit-two"></div><div class="orbit orbit-three"></div><div class="portal-diamond"></div><span class="rune rune-top">✧</span><span class="rune rune-left">✦</span><span class="rune rune-right">✦</span><span class="rune rune-bottom">✧</span><div class="portal-core"><svg viewBox="0 0 160 200"><defs><linearGradient id="crystal" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#fff"/><stop offset=".35" stop-color="#b9eaff"/><stop offset=".7" stop-color="#609cce"/><stop offset="1" stop-color="#eefaff"/></linearGradient></defs><path d="M80 5 140 90 80 195 20 90Z" fill="url(#crystal)" stroke="#e7f9ff" stroke-width="2"/><path d="M80 5 80 195 52 91Z" fill="#fff" opacity=".52"/><path d="M80 5 108 91 80 195 140 90Z" fill="#5495cc" opacity=".45"/><path d="M20 90 52 91 80 70 108 91 140 90M80 5 52 91 80 195M80 5 108 91 80 195" fill="none" stroke="#e9faff" opacity=".8"/></svg></div><div class="portal-star s1">✧</div><div class="portal-star s2">✦</div><div class="portal-star s3">✧</div><div class="ground-ring"></div></div>
+            <div class="summon-caption"><span>聆听命运的回响</span><p>下一次相遇，也许就是逆天改命。</p></div>
+            <div class="pity"><span>距传说保底 <b id="pity-left">80</b> 次</span><div class="pity-track"><i id="pity-progress"></i></div><small>每 10 次祈愿，至少获得一件史诗或以上奖励</small></div>
+            <div class="draw-actions"><button class="draw-button single" id="draw-one"><span>祈愿一次</span><small><img class="flower-icon" src="assets/red-flower.png" alt="大红花"> 10 朵</small></button><button class="draw-button ten" id="draw-ten"><span>祈愿十次 <b>×10</b></span><small><img class="flower-icon" src="assets/red-flower.png" alt="大红花"> 100 朵</small></button></div>
+            <button class="free-draw-button" id="draw-free" hidden>免费祈愿</button>
+            <label class="skip"><input type="checkbox" id="skip-animation"> 默认跳过动画</label>
+          </section>
+          <aside class="right-column"><section class="glass featured"><div class="section-label">LEGENDARY COLLAB <span>✦</span></div><h2>小新联动礼盒<span>本期唯一传说奖励</span></h2><div class="featured-art"><img class="featured-reward-image" src="assets/rewards/shinchan.png" alt="蜡笔小新联动袋子、贴纸和袜子"><span class="legend-stars">✦ ✦ ✦ ✦ ✦</span></div><div class="featured-name"><small>SSR · 传说</small><h3>蜡笔小新联动</h3><p>袋子 · 贴纸 · 袜子</p></div><div class="featured-bottom"><span>大学趣味奖池</span><button id="pool-button">查看全部 <span>↗</span></button></div></section><section class="mini-note"><span>✧</span><p>把好运装进口袋<br><b>收下一点校园快乐</b></p></section></aside>
+        </div>
+      </section>
+      <section id="inventory-view" class="view glass collection-view" hidden><div class="view-title"><div><div class="eyebrow">YOUR COLLECTION</div><h2>我的宝库</h2></div><span id="collection-summary"></span></div><div id="inventory-grid" class="reward-grid"></div></section>
+      <section id="history-view" class="view glass collection-view" hidden><div class="view-title"><div><div class="eyebrow">ECHOES OF DESTINY</div><h2>祈愿记录</h2></div><span>最近 200 次祈愿</span></div><div id="history-list"></div></section>
+    </main>
+    <footer><span>一念之间，命运新生</span></footer>
+  </div>
+  <dialog id="summon-cinematic" class="summon-cinematic" aria-label="祈愿动画">
+    <div class="cinematic-background" aria-hidden="true"></div><div class="cinematic-rays" aria-hidden="true"></div>
+    <div class="cinematic-topline">D E S T I N Y &nbsp; · &nbsp; S U M M O N</div>
+    <div class="cinematic-stage" aria-hidden="true"><div class="cinematic-ring ring-a"></div><div class="cinematic-ring ring-b"></div><div class="cinematic-ring ring-c"></div><div class="cinematic-sigil">✧</div><div class="cinematic-flowers" id="cinematic-flowers"></div><div class="cinematic-burst"></div></div>
+    <div class="cinematic-copy"><span id="cinematic-status" aria-live="polite">以花为引，叩问天命</span><p id="cinematic-detail">大红花正在汇入法阵</p></div>
+    <button id="skip-cinematic" class="skip-cinematic" autofocus>跳过动画 <span>≫</span></button>
+  </dialog>
+  <section id="auth-screen" class="auth-screen" aria-label="宿主绑定">
+    <div class="entry-atmosphere" aria-hidden="true"><div class="entry-aurora"></div><div id="entry-stars"></div><div id="entry-meteors"></div><div class="entry-horizon"></div></div>
+    <header class="entry-header"><span class="entry-brand">✧ <span>拾花物语</span></span><div class="entry-header-actions"><span class="entry-edition">拾一朵花 · 遇一份幸运</span><button type="button" id="entry-fullscreen" class="icon-button" aria-label="进入全屏" title="进入全屏" aria-pressed="false"><svg class="entry-fullscreen-symbol" viewBox="0 0 40 40" fill="none" aria-hidden="true"><circle class="fullscreen-orbit" cx="20" cy="20" r="18"/><path class="fullscreen-diamond" d="M20 3 37 20 20 37 3 20Z"/><path class="fullscreen-expand" d="M15 10h-5v5m15-5h5v5M10 25v5h5m15-5v5h-5"/><path class="fullscreen-contract" d="M10 15h5v-5m15 5h-5v-5M15 30v-5h-5m15 5v-5h5"/><path class="fullscreen-star" d="m20 15 1.3 3.7L25 20l-3.7 1.3L20 25l-1.3-3.7L15 20l3.7-1.3Z"/></svg></button></div></header>
+    <div class="entry-content">
+      <div class="entry-emblem" aria-hidden="true"><div class="entry-orbit outer"></div><div class="entry-orbit inner"></div><div class="entry-diamond"></div><svg viewBox="0 0 100 120"><defs><linearGradient id="entry-crystal" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#fff"/><stop offset=".5" stop-color="#bfeaff"/><stop offset="1" stop-color="#669de6"/></linearGradient></defs><path d="M50 6 76 58 50 114 24 58Z" fill="url(#entry-crystal)" fill-opacity=".75" stroke="#e5f8ff"/><path d="m50 6-9 52 9 56 9-56Z" fill="#fff" fill-opacity=".55"/><path d="m24 58 26-12 26 12-26 9Z" fill="#d6efff" fill-opacity=".4"/></svg><span class="emblem-star one">✦</span><span class="emblem-star two">✧</span></div>
+      <h1>拾花物语</h1><p class="entry-subtitle">BLOSSOM TALES · HOST CONNECTION</p>
+      <p class="entry-whisper" id="entry-whisper">叮！宿主，欢迎回到你的大学生活。</p>
+      <div class="entry-form-wrap">
+        <div class="auth-tabs" aria-label="宿主接入或初次绑定"><button type="button" id="auth-login-tab" class="active" aria-pressed="true">宿主接入</button><span aria-hidden="true">✧</span><button type="button" id="auth-register-tab" aria-pressed="false">初次绑定</button></div>
+        <p id="registration-notice" class="registration-notice" role="status" hidden>叮！新宿主绑定暂未开放，已有宿主可正常接入。</p>
+        <form id="auth-form" class="account-form">
+          <label class="entry-field"><span>编号</span><input id="auth-username" autocomplete="username" autocapitalize="none" spellcheck="false" minlength="3" maxlength="24" pattern="[A-Za-z0-9_]{3,24}" title="3–24 位字母、数字或下划线" placeholder="输入宿主编号" required></label>
+          <label class="entry-field" id="auth-nickname-row" hidden><span>称呼</span><input id="auth-nickname" autocomplete="nickname" maxlength="20" placeholder="系统该如何称呼你"></label>
+          <label class="entry-field"><span>密钥</span><input id="auth-password" type="password" autocomplete="current-password" minlength="6" maxlength="128" placeholder="输入系统密钥 · 至少 6 位" required></label>
+          <label class="entry-field" id="auth-confirm-row" hidden><span>确认</span><input id="auth-confirm" type="password" autocomplete="new-password" minlength="6" maxlength="128" placeholder="再次确认系统密钥"></label>
+          <p id="auth-message" class="form-message" role="status" aria-live="polite"></p>
+          <button class="primary-action" id="auth-submit"><span id="auth-submit-label">唤醒系统</span><span class="entry-arrow" aria-hidden="true">⟶</span></button>
+        </form>
+        <p class="entry-note" id="entry-note">接入宿主档案，继续你的校园奇遇</p>
+      </div>
+    </div>
+    <footer class="entry-footer"><span></span><p>收集大红花 · 解锁大学里的小幸运</p><span></span></footer>
+    <div class="entry-transition" aria-hidden="true"></div>
+  </section>
+  <dialog id="account-dialog" class="blossom-dialog" aria-labelledby="account-heading">
+    <button class="icon-button" data-close-dialog aria-label="关闭宿主花笺">×</button>
+    <div class="eyebrow">BLOSSOM TALES · YOUR STORY</div><h2 id="account-heading">宿主花笺</h2>
+    <div class="host-flower-seal" aria-hidden="true">✿</div><h3 id="account-name"></h3><p id="account-username"></p>
+    <div class="host-keepsakes"><div><b id="account-flowers">0</b><span>我的红花</span></div><div><b id="account-free">0</b><span>免费祈愿</span></div></div>
+    <p class="host-letter" id="account-growth">每一次相逢，都收进你的故事里。</p>
+    <div class="host-letter-actions"><button id="logout-button" class="account-action">暂别花间</button><button class="blossom-action" data-close-dialog>继续拾花 <span aria-hidden="true">↗</span></button></div>
+    <p class="host-save-note">暂别即退出当前宿主，红花与收藏都会保留。</p><p class="form-message" id="account-message" role="status"></p>
+  </dialog>
+  <dialog id="admin-dialog" aria-label="系统管理">
+    <div class="admin-head"><div><div class="eyebrow">SYSTEM CONTROL CENTER</div><h2>系统本身 · 管理中枢</h2></div><div class="admin-head-actions"><button id="admin-refresh" class="account-action">刷新数据</button><button id="admin-logout" class="account-action">退出</button><button class="icon-button" data-close-dialog aria-label="关闭管理界面">×</button></div></div>
+    <nav class="admin-tabs" aria-label="管理功能"><button class="active" data-admin-tab="players">宿主档案</button><button data-admin-tab="prayers">玩家祈愿记录</button><button data-admin-tab="probabilities">奖池概率</button><button data-admin-tab="settings">系统设置</button><button data-admin-tab="logs">系统记录</button></nav><p id="admin-message" class="form-message" role="status"></p>
+    <section id="admin-players-panel" class="admin-panel"><div class="admin-stats"><span><b id="player-count">0</b> 位已绑定宿主</span><span><b id="flower-count">0</b> 朵红花总余额</span></div><div class="admin-columns"><div class="player-section"><input type="search" id="player-search" aria-label="搜索宿主" placeholder="搜索宿主名称或绑定账号"><div id="players-list"></div></div><aside class="grant-box"><h3>系统发放 · 大红花</h3><p>为指定宿主发放红花，到账后即可用于祈愿。</p><form id="grant-form" class="account-form"><label>接收宿主<select id="grant-player" required><option value="">选择宿主</option></select></label><label>发放数量<input type="number" id="grant-amount" value="100" min="1" max="1000000" step="1" required></label><label>发放备注 · 可选<input id="grant-note" maxlength="100" placeholder="例如：完成任务奖励"></label><button class="primary-action" id="grant-submit">发放红花</button><p class="form-message" id="grant-message" role="status"></p></form></aside></div></section>
+    <section id="admin-probabilities-panel" class="admin-panel" hidden><p class="probability-intro">名称可直接编辑（最多24字），概率合计100%。传说每人限1份；改名不改变奖励效果或已获数量。</p><form id="probability-form" class="account-form"><div id="probability-fields" class="probability-grid"></div><label class="guarantees-option"><input type="checkbox" id="guarantees-enabled">启用十抽史诗 / 八十抽传说保底</label><p class="guarantee-help">开启须史诗、传说概率均大于 0；十抽至少史诗，八十抽传说优先，同级按权重抽取，保底提高综合概率。已获传说者不再抽出传说，其余按原权重分配；史诗保底继续。关闭保底保留计数。</p><div class="probability-bottom"><div>当前合计<strong id="probability-total">100.00%</strong></div><button class="primary-action" id="probability-save">保存奖池设置</button></div><p class="form-message" id="probability-message" role="status"></p></form></section>
+    <section id="admin-prayers-panel" class="admin-panel" hidden>
+      <div class="prayer-toolbar account-form"><label>查看宿主<select id="prayer-player"><option value="">全部宿主</option></select></label><button class="account-action" id="prayer-refresh">刷新记录</button></div>
+      <p class="probability-intro">每次祈愿单独记录，十连展示为 10 条。旧版仅能补入当时保留的最近 200 次，后续记录持续保存。</p>
+      <p class="form-message" id="prayer-message" role="status"></p><div id="admin-prayers"></div>
+      <div class="prayer-pagination"><span id="prayer-summary">暂无记录</span><div><button class="account-action" id="prayer-prev" disabled>上一页</button><button class="account-action" id="prayer-next" disabled>下一页</button></div></div>
+    </section>
+    <section id="admin-settings-panel" class="admin-panel" hidden>
+      <form id="system-settings-form" class="account-form system-settings-card"><div class="eyebrow">BLOSSOM TALES · SETTINGS</div><h3>新宿主绑定</h3><p>控制是否开放注册。关闭后无法建立新宿主档案，已有宿主仍可正常接入和祈愿。</p><label class="registration-switch"><span><b>开放注册</b><small id="registration-state">正在读取设置</small></span><input type="checkbox" role="switch" id="registration-enabled" aria-label="开放注册"><i aria-hidden="true"></i></label><button class="primary-action" id="system-settings-save">保存系统设置</button><p class="form-message" id="settings-message" role="status"></p></form>
+    </section>
+    <section id="admin-logs-panel" class="admin-panel" hidden><p class="probability-intro">最近 100 条红花发放、概率及系统设置变更记录</p><div id="admin-logs"></div></section>
+  </dialog>
+  <dialog id="growth-ceremony" aria-labelledby="growth-title" aria-describedby="growth-description">
+    <div class="growth-petals" id="growth-petals" aria-hidden="true"></div>
+    <div class="eyebrow">BLOSSOM TALES · A NEW CHAPTER</div>
+    <div class="growth-emblem" id="growth-emblem" aria-hidden="true"></div>
+    <p>花开一程 · 新境已至</p><h2 id="growth-title"></h2>
+    <p id="growth-description"></p>
+    <button type="button" class="growth-continue" id="growth-continue" autofocus>继续拾花 →</button>
+  </dialog>
+  <div id="toast" role="status" class="toast"></div>
+  <dialog id="modal"><div class="modal-head"><div><span class="eyebrow" id="modal-eyebrow">DESTINY SYSTEM</span><h2 id="modal-title"></h2></div><button id="close-modal" class="icon-button" aria-label="关闭">×</button></div><div id="modal-content"></div><div id="modal-footer"></div></dialog>
+</body>
+</html>

@@ -1,0 +1,30 @@
+/* Growth adorns the existing host card without changing its frame. */
+.host-card{--growth-color:#bce6ff;transition:border-color .7s,box-shadow .7s}
+.host-card .level,.host-card #host-realm{color:var(--growth-color)}
+.host-card .avatar{flex-shrink:0;color:var(--growth-color);border-color:var(--growth-color);text-shadow:0 0 14px var(--growth-color)}
+.host-card .host-title>div{min-width:0;padding-right:34px}
+.host-card #host-name{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.host-card .host-divider{position:relative}
+#host-growth-fill{display:block;height:100%;width:0;background:var(--growth-color);box-shadow:0 0 7px var(--growth-color);transition:width .5s}
+.host-card[data-stage]:not([data-stage="0"]){border-color:color-mix(in srgb,var(--growth-color) 65%,transparent);box-shadow:inset 0 0 35px color-mix(in srgb,var(--growth-color) 10%,transparent),0 0 24px color-mix(in srgb,var(--growth-color) 13%,transparent)}
+.host-card[data-stage]:not([data-stage="0"]) .avatar{animation:host-bloom 4s ease-in-out infinite}
+.host-card[data-stage="4"],.host-card[data-stage="5"]{background-image:radial-gradient(ellipse at top right,#ffedb51c,transparent 65%)}
+.growth-result{padding:10px 14px;border:1px solid color-mix(in srgb,var(--growth-color) 45%,transparent);background:color-mix(in srgb,var(--growth-color) 9%,transparent);color:var(--growth-color);text-align:center;font-size:13px;line-height:1.8;margin:0 0 16px}
+#modal[data-mode^="result-"] #modal-content:has(.growth-result){grid-template-rows:auto auto minmax(0,1fr)}
+#modal[data-mode^="result-"] .growth-result{margin:0;padding:5px 10px}
+#growth-ceremony{--growth-color:#d9c3ff;width:min(520px,calc(100vw - 32px));max-height:calc(100dvh - 32px);overflow:hidden;text-align:center;padding:42px 24px 30px;border:1px solid var(--growth-color);background:linear-gradient(#122b4dbb,#102743ed),url('assets/blossom-dialogs-daylight.png') center/cover;box-shadow:0 0 70px color-mix(in srgb,var(--growth-color) 30%,transparent)}
+#growth-ceremony::backdrop{background:#06162e99;backdrop-filter:blur(5px)}
+#growth-ceremony .growth-emblem{display:grid;place-items:center;position:relative;width:140px;height:140px;margin:26px auto;color:var(--growth-color);font:58px var(--serif);text-shadow:0 0 24px var(--growth-color)}
+.growth-emblem:before,.growth-emblem:after{content:"";position:absolute;inset:0;border:1px solid var(--growth-color);border-radius:50%;opacity:.65;animation:growth-ring 6s linear infinite}
+.growth-emblem:after{inset:17px;border-radius:0;animation-direction:reverse}
+#growth-ceremony h2{font:32px var(--serif);letter-spacing:6px;color:var(--growth-color);margin:20px 0}
+#growth-ceremony p{font-size:13px;line-height:1.9;color:#d8eaff}
+#growth-ceremony .eyebrow{color:var(--growth-color);font-size:10px}
+#growth-ceremony .growth-continue{position:relative;margin-top:16px;padding:12px 30px;color:var(--growth-color);border:1px solid var(--growth-color);background:#c7e4ff12}
+.growth-petals{position:absolute;inset:0;pointer-events:none;overflow:hidden}
+.growth-petals i{position:absolute;left:50%;top:44%;color:var(--growth-color);font-size:16px;opacity:0;font-style:normal;animation:growth-petal 3.4s var(--delay) ease-out infinite}
+@keyframes host-bloom{50%{filter:brightness(1.25);box-shadow:inset 0 0 18px color-mix(in srgb,var(--growth-color) 30%,transparent)}}
+@keyframes growth-ring{to{transform:rotate(360deg)}}
+@keyframes growth-petal{10%{opacity:.9}90%{opacity:.4}to{opacity:0;transform:translate(var(--x),var(--y)) rotate(var(--turn)) scale(.4)}}
+@media(max-height:600px){#growth-ceremony{padding:22px 18px}#growth-ceremony .growth-emblem{width:85px;height:85px;margin:14px auto;font-size:38px}#growth-ceremony h2{font-size:25px;margin:12px 0}}
+@media(prefers-reduced-motion:reduce){.host-card .avatar,#growth-ceremony *,#growth-ceremony *:before,#growth-ceremony *:after{animation:none!important}.growth-petals{display:none}#host-growth-fill{transition:none}}

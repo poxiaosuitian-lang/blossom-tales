@@ -1,0 +1,17 @@
+{
+  "name": "blossom-tales",
+  "version": "1.0.0",
+  "private": true,
+  "engines": {
+    "node": ">=24"
+  },
+  "scripts": {
+    "start": "node --no-warnings server.cjs",
+    "test": "node tests/engine.test.cjs && node tests/growth.test.cjs && node tests/server.test.cjs",
+    "test:browser": "node tests/browser-check.cjs",
+    "test:audio": "node tests/audio-browser.test.cjs"
+  },
+  "devDependencies": {
+    "playwright": "1.63.0"
+  }
+}

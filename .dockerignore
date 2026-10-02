@@ -1,0 +1,7 @@
+**
+!package.json
+!server.cjs
+!dist/
+!dist/**
+!scripts/
+!scripts/healthcheck.cjs

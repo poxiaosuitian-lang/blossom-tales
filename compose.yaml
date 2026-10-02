@@ -1,0 +1,26 @@
+name: blossom-tales
+services:
+  app:
+    build: .
+    image: blossom-tales:local
+    restart: unless-stopped
+    init: true
+    ports:
+      - "${BIND_ADDRESS:-0.0.0.0}:${APP_PORT:-5173}:5173"
+    environment:
+      ADMIN_USERNAME: ${ADMIN_USERNAME:-poxiao}
+      ADMIN_PASSWORD: ${ADMIN_PASSWORD:?请在 .env 中设置首次部署的管理员密码}
+      COOKIE_SECURE: ${COOKIE_SECURE:-0}
+    volumes:
+      - blossom-data:/app/data
+    read_only: true
+    tmpfs:
+      - /tmp:size=16m,mode=1777
+    cap_drop:
+      - ALL
+    security_opt:
+      - no-new-privileges:true
+    stop_grace_period: 15s
+
+volumes:
+  blossom-data:
