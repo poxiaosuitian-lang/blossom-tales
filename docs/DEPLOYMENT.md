@@ -63,7 +63,7 @@ docker compose start app
 ```sh
 docker compose create app
 docker compose cp ./data/. app:/app/data/
-docker compose run --rm --no-deps --user root --entrypoint chown app -R node:node /app/data
+docker compose run --rm --no-deps --user root --cap-add CHOWN --entrypoint chown app -R node:node /app/data
 docker compose up -d
 ```
 
