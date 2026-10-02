@@ -1,11 +1,24 @@
 'use strict';
 const assert = require('node:assert/strict');
 const path = require('node:path');
-const { pathToFileURL } = require('node:url');
+const http = require('node:http');
+const fs = require('node:fs');
 const { chromium } = require('playwright');
 const { fresh } = require('../dist/engine.js');
 (async () => {
   const browser = await chromium.launch({ executablePath: process.env.CHROMIUM_PATH || undefined, headless: true });
+  const root = path.resolve(__dirname, '../dist');
+  const server = http.createServer((req, res) => {
+    const pathname = new URL(req.url, 'http://localhost').pathname;
+    const file = path.resolve(root, '.' + (pathname === '/' ? '/index.html' : pathname));
+    if (!file.startsWith(root + path.sep)) { res.writeHead(404); res.end(); return; }
+    fs.readFile(file, (error, data) => {
+      if (error) { res.writeHead(404); res.end(); return; }
+      res.setHeader('Content-Type', { '.html': 'text/html', '.js': 'text/javascript', '.css': 'text/css', '.png': 'image/png' }[path.extname(file)] || 'application/octet-stream');
+      res.end(data);
+    });
+  });
+  await new Promise(resolve => server.listen(0, '127.0.0.1', resolve));
   try {
     const page = await browser.newPage({ viewport: { width: 1440, height: 900 } });
     const errors = [];
@@ -26,7 +39,7 @@ const { fresh } = require('../dist/engine.js');
     await page.route('**/api/**', route => route.fulfill({ status: 200, contentType: 'application/json', body: JSON.stringify({
       user: { id: 99, username: 'audio_test', nickname: '聆听花语', role: 'player' }, state: fresh(), registrationEnabled: true
     }) }));
-    const url = pathToFileURL(path.resolve(__dirname, '../dist/index.html')).href;
+    const url = `http://127.0.0.1:${server.address().port}`;
     await page.goto(url);
     const button = page.locator('#sound');
     await button.waitFor();
@@ -73,5 +86,5 @@ const { fresh } = require('../dist/engine.js');
     assert.equal(await page.evaluate(() => audioContexts.length), 0);
     assert.deepEqual(errors, []);
     console.log('PASS: default on, first-interaction playback, music signal/headroom, all cues, mute, single context, hidden-tab pause/resume and saved preference');
-  } finally { await browser.close(); }
+  } finally { await browser.close(); await new Promise(resolve => server.close(resolve)); }
 })().catch(error => { console.error(error); process.exitCode = 1; });
